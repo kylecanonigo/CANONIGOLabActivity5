@@ -25,27 +25,40 @@ public class LeapYearGUI extends JFrame {
         app.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         app.setVisible(true);
     }
+    public static void ensurePositive(int num) throws Exception {
+        if (num < 0) {
+            throw new Exception("Input must not be a negative number");
+        }
+    }
 
     public void isLeapYear() {
-        String strYear = tfYear.getText();
-        int intYear = Integer.parseInt(strYear);
+        try {
+            String strYear = tfYear.getText();
+            int intYear = Integer.parseInt(strYear);
 
-        if (intYear % 4 != 0) {
-            JOptionPane.showMessageDialog(panel1, "Not a leap year");
+            ensurePositive(intYear);
+
+            if (intYear % 4 != 0) {
+                JOptionPane.showMessageDialog(panel1, "Not a leap year");
+                return;
+            }
+
+            if (intYear % 100 != 0) {
+                JOptionPane.showMessageDialog(panel1, "Leap year");
+                return;
+            }
+
+            if (intYear % 400 != 0) {
+                JOptionPane.showMessageDialog(panel1, "Not a leap year");
+                return;
+            }
+
+            JOptionPane.showMessageDialog(panel1, "Leap year"); /* divisible by 400 */
             return;
+        } catch(NumberFormatException e) {
+            JOptionPane.showMessageDialog(panel1, "Input must be a number");
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(panel1, e.getMessage());
         }
-
-        if (intYear % 100 != 0) {
-            JOptionPane.showMessageDialog(panel1, "Leap year");
-            return;
-        }
-
-        if (intYear % 400 != 0) {
-            JOptionPane.showMessageDialog(panel1, "Not a leap year");
-            return;
-        }
-
-        JOptionPane.showMessageDialog(panel1, "Leap year"); /* divisible by 400 */
-        return;
     }
 }
