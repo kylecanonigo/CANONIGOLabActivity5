@@ -31,29 +31,35 @@ public class SimpleCalcGUI extends JFrame {
     }
 
     public void compute() {
-        int result = 0;
-        String strNumber1 = tfNumber1.getText();
-        String strNumber2 = tfNumber2.getText();
+        try {
+            int result = 0;
+            String strNumber1 = tfNumber1.getText();
+            String strNumber2 = tfNumber2.getText();
 
-        int intNumber1 = Integer.parseInt(strNumber1);
-        int intNumber2 = Integer.parseInt(strNumber2);
+            int intNumber1 = Integer.parseInt(strNumber1);
+            int intNumber2 = Integer.parseInt(strNumber2);
 
-        switch(cbOperations.getSelectedItem().toString()) {
-            case "+":
-                result = (intNumber1 + intNumber2);
-                break;
-            case "-":
-                result = (intNumber1 - intNumber2);
-                break;
-            case "*":
-                result = (intNumber1 * intNumber2);
-                break;
-            case "/":
-                result = (intNumber1 / intNumber2);
-                break;
+            switch (cbOperations.getSelectedItem().toString()) {
+                case "+":
+                    result = (intNumber1 + intNumber2);
+                    break;
+                case "-":
+                    result = (intNumber1 - intNumber2);
+                    break;
+                case "*":
+                    result = (intNumber1 * intNumber2);
+                    break;
+                case "/":
+                    result = (intNumber1 / intNumber2);
+                    break;
+            }
+
+            String strResult = Integer.toString(result);
+            lblResult.setText(strResult);
+        } catch(NumberFormatException e) {
+            JOptionPane.showMessageDialog(panel1, "Input must be a number");
+        } catch(ArithmeticException e) {
+            JOptionPane.showMessageDialog(panel1, "Cannot divide by zero");
         }
-
-        String strResult = Integer.toString(result);
-        lblResult.setText(strResult);
     }
 }
