@@ -56,6 +56,7 @@ public class SimpleCalcGUI extends JFrame {
 
             String strResult = Integer.toString(result);
             lblResult.setText(strResult);
+            lblResult.setEditable(false);
         } catch(NumberFormatException e) {
             JOptionPane.showMessageDialog(panel1, "Input must be a number");
         } catch(ArithmeticException e) {

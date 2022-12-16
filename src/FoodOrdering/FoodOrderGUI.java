@@ -1,6 +1,8 @@
 package FoodOrdering;
 
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FoodOrderGUI extends JFrame {
     private JPanel panel1;
@@ -15,6 +17,23 @@ public class FoodOrderGUI extends JFrame {
     private JRadioButton rb5;
     private JRadioButton rb10;
     private JRadioButton rb15;
+    List<JCheckBox> foods;
+    List<JRadioButton> discounts;
+
+    public FoodOrderGUI() {
+        foods = new ArrayList<>();
+        foods.add(cPizza);
+        foods.add(cBurger);
+        foods.add(cFries);
+        foods.add(cSoftDrinks);
+        foods.add(cTea);
+        foods.add(cSundae);
+        discounts = new ArrayList<>();
+        discounts.add(rbNone);
+        discounts.add(rb5);
+        discounts.add(rb10);
+        discounts.add(rb15);
+    }
 
     public static void main(String[] args) {
         FoodOrderGUI app = new FoodOrderGUI();
