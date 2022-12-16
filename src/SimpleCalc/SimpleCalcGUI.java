@@ -25,7 +25,7 @@ public class SimpleCalcGUI extends JFrame {
         SimpleCalcGUI app = new SimpleCalcGUI();
         app.setTitle("Simple Calculator");
         app.setContentPane(app.panel1);
-        app.setSize(200, 300);
+        app.setSize(600, 300);
         app.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         app.setVisible(true);
     }
