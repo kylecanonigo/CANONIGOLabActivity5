@@ -27,12 +27,6 @@ public class FoodOrderGUI extends JFrame {
         foods.add(cFries);
         foods.add(cSoftDrinks);
         foods.add(cTea);
-        foods.add(cSundae);
-        discounts = new ArrayList<>();
-        discounts.add(rbNone);
-        discounts.add(rb5);
-        discounts.add(rb10);
-        discounts.add(rb15);
     }
 
     public static void main(String[] args) {
@@ -42,5 +36,9 @@ public class FoodOrderGUI extends JFrame {
         app.setSize(600, 500);
         app.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         app.setVisible(true);
+    }
+
+    void compute() {
+
     }
 }
