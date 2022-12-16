@@ -1,6 +1,9 @@
 package FoodOrdering;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +30,19 @@ public class FoodOrderGUI extends JFrame {
         foods.add(cFries);
         foods.add(cSoftDrinks);
         foods.add(cTea);
+        foods.add(cSundae);
+        discounts = new ArrayList<>();
+        discounts.add(rbNone);
+        discounts.add(rb5);
+        discounts.add(rb10);
+        discounts.add(rb15);
+
+        btnOrder.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                compute();
+            }
+        });
     }
 
     public static void main(String[] args) {
@@ -38,7 +54,31 @@ public class FoodOrderGUI extends JFrame {
         app.setVisible(true);
     }
 
-    void compute() {
+    public void compute() {
         // TODO
+        double[] foodCosts = {100.00, 80.00, 65.00, 55.00, 50.00, 40.00};
+        double[] foodDiscounts = {0.00, 0.05, 0.10, 0.15};
+        int index = 0;
+        double total = 0.00;
+        for (JCheckBox cb : foods) {
+            if (cb.isSelected()) {
+                total = total + foodCosts[index];
+            }
+            index++;
+        }
+        index = 0;
+        for (JRadioButton rb : discounts) {
+            if (rb.isSelected()) {
+                double discount = total * foodDiscounts[index];
+                total = total - discount;
+                break;
+            }
+            index++;
+        }
+
+        DecimalFormat df = new DecimalFormat("0.00");
+        String formatted = df.format(total);
+        JOptionPane.showMessageDialog(panel1, "The total price is Php " + formatted);
+        return;
     }
 }
